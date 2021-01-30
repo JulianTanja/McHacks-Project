@@ -1,19 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Jan 29 23:03:25 2021
-
-@author: andrewtuckman
-"""
-
-#
-# ps9pr1.py (Problem Set 9, Problem 1)
-#
-# A Connect Four Board class
-#
-# Computer Science 111
-#
-
 class Board:
     """ a data type for a Connect Four board with arbitrary dimensions
     """   
@@ -29,18 +13,17 @@ class Board:
     def __repr__(self):
         """ Returns a string representation of a Board object.
         """
-        s = ''         # begin with an empty string
+        s = ''        
 
         # add one row of slots at a time to s
         for row in range(self.height):
-            s += '|'   # one vertical bar at the start of the row
+            s += '|'   
 
             for col in range(self.width):
                 s += self.slots[row][col] + '|'
 
-            s += '\n'  # newline at the end of the row
-
-        ### add your code here ###
+            s += '\n'  
+            
         s += (2 * self.width + 1) * '-'
         s += '\n'
         s += ' '
@@ -52,11 +35,6 @@ class Board:
         return s
 
     def add_checker(self, checker, col):
-        """ adds the specified checker (either 'X' or 'O') to the
-            column with the specified index col in the called Board.
-            inputs: checker is either 'X' or 'O'
-                    col is a valid column index
-        """
         assert(checker == 'X' or checker == 'O')
         assert(col >= 0 and col < self.width)
         
@@ -68,7 +46,7 @@ class Board:
                 break
             else:
                 row -= 1
-    ### add your reset method here ###
+                
     def reset(self):
         """ reset the Board object on which it is called by setting all slots
             to contain a space character
@@ -95,7 +73,6 @@ class Board:
             else:
                 checker = 'X'
 
-    ### add your remaining methods here
     def can_add_to(self, col):
         """ returns True if it is valid to place a checker in the column col
             on the calling Board object. Otherwise, it should return False
@@ -188,15 +165,6 @@ class Board:
         if self.is_horizontal_win(checker) == True:
             return True
         return False
-    
-#
-# ps9pr2.py  (Problem Set 9, Problem 2)
-#
-# A Connect-Four Player class 
-#  
-
-
-# write your class below
 
 class Player:
     def __init__(self, checker):
@@ -231,27 +199,12 @@ class Player:
                 column_num = int(column_str)
                 if b.can_add_to(column_num):
                     return column_num
-            print('Try again!')
-            
-            
-#
-# ps9pr3.py  (Problem Set 9, Problem 3)
-#
-# Playing the game 
-#   
-
+            print('Try again!')            
+           
 import random
 import time
     
 def connect_four(p1, p2, bet):
-    """ Plays a game of Connect Four between the two specified players,
-        and returns the Board object as it looks at the end of the game.
-        inputs: p1 and p2 are objects representing Connect Four
-          players (objects of the Player class or a subclass of Player).
-          One player should use 'X' checkers and the other should
-          use 'O' checkers.
-    """
-    # Make sure one player is 'X' and one player is 'O'.
     if p1.checker not in 'XO' or p2.checker not in 'XO' \
        or p1.checker == p2.checker:
         print('need one X player and one O player.')
@@ -267,7 +220,6 @@ def connect_four(p1, p2, bet):
         if process_move(p2, b, bet) == True:
             return b
 
-# Function 1
 def process_move(p, b, bet):
     """ takes two parameters: a Player object p for the player whose move
         is being processed, and a Board object b for the board on which the
@@ -305,13 +257,6 @@ class RandomPlayer(Player):
         columns = [x for x in range(b.width) if (b.can_add_to(x) == True)]
         pick = random.choice(columns)
         return pick
-
-#
-# ps9pr4.py  (Problem Set 9, Problem 4)
-#
-# AI Player for use in Connect Four   
-# 
-
 
 class AIPlayer(Player):
     """ creates a more “intelligent” computer player – one that uses
@@ -384,11 +329,7 @@ class AIPlayer(Player):
         scores = self.scores_for(b)
         return self.max_score_column(scores)
 
-#
-# Own code for hackathon
-#
-# AI Player creationa and Game  
-#     
+  
 bet = input("Which player do you think will win?: ")   
 
 bet_validity = False
