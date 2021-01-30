@@ -1,17 +1,19 @@
 import logo from './logo.svg';
 import './App.css';
 import Button from 'react-bootstrap/Button';
-import Board from './Board';
+// import Board from './Board';
+import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
+import Game from './Game';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
 
        Connect 4
       </header>
-      <div><Board name="test"></Board></div>
+      <div className="board"><Game ></Game></div>
     </div>
   );
 }
