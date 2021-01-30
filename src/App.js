@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+import Button from 'react-bootstrap/Button';
+import './Board';
 
 function App() {
   return (
@@ -9,6 +11,7 @@ function App() {
 
        Connect 4
       </header>
+      <div><Board name="test"></Board></div>
     </div>
   );
 }
