@@ -1,4 +1,3 @@
-import React from 'react';
 import './App.css';
 import {Navbar} from './components/Navbar';
  
@@ -12,10 +11,10 @@ import Game from './Game';
 function App() {
   return (
     <div className="App">
-//       <header className="App-header">
+       {/* <header className="App-header">
 
-//        Connect 4
-//       </header>
+        Connect 4
+      </header> */}
     <div className="Container">
     <Navbar />
     </div>
