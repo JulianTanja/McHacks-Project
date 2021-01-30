@@ -227,18 +227,6 @@ def process_move(p, b, bet):
         return True
     else:
         return False
-    
-class RandomPlayer(Player):
-    """ creates a unintelligent computer player that chooses at random
-        from the available columns
-    """
-    def next_move(self, b):
-        """ choose at random from the columns in the board b that are not
-            yet full, and return the index of that randomly selected column
-        """
-        columns = [x for x in range(b.width) if (b.can_add_to(x) == True)]
-        pick = random.choice(columns)
-        return pick
 
 class AIPlayer(Player):
     """ creates a more “intelligent” computer player – one that uses
