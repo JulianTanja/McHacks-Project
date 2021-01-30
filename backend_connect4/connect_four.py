@@ -208,7 +208,6 @@ def process_move(p, b, bet):
         game is being played.
         It returns True if a win or a tie, and False otherwise
     """
-    print('Player ', str(p.checker), "'s turn", '\n')
     nxt_move = p.next_move(b)
     b.add_checker(p.checker, nxt_move)
     time.sleep(.6)
