@@ -1,5 +1,11 @@
+import React, { Component} from 'react';
+import './App.css'
+
 class Board extends React.Component {
+
     render() {
-      return <h1>Hello, {this.props.name}</h1>;
+      return <p>Test</p>;
     }
   }
+
+  export default Board;

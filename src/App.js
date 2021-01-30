@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Button from 'react-bootstrap/Button';
-import './Board';
+import Board from './Board';
 
 function App() {
   return (
