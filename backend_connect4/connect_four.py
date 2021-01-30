@@ -1,7 +1,6 @@
 class Board:
     """ a data type for a Connect Four board with arbitrary dimensions
     """   
-    ### add your constructor here ###
     def __init__(self, height, width):
             """ constructs a new Board object
                 inputs: two positive numbers for height and width
@@ -14,8 +13,6 @@ class Board:
         """ Returns a string representation of a Board object.
         """
         s = ''        
-
-        # add one row of slots at a time to s
         for row in range(self.height):
             s += '|'   
 
@@ -37,8 +34,6 @@ class Board:
     def add_checker(self, checker, col):
         assert(checker == 'X' or checker == 'O')
         assert(col >= 0 and col < self.width)
-        
-        ### put the rest of the method here ###
         row = -1
         for i in range(self.height):
             if self.slots[row][col] == ' ':
