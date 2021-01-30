@@ -167,7 +167,6 @@ class Player:
         """
         assert(checker == 'X' or checker == 'O')
         self.checker = checker
-        self.num_moves = 0
         
     def __repr__(self):
         """ returns a string representing a Player object
@@ -213,7 +212,7 @@ def process_move(p, b, bet):
     time.sleep(.6)
     print(b)
     if b.is_win_for(p.checker):
-        print(str(p.checker), ' wins in ', str(p.num_moves), ' moves.')
+        print(str(p.checker), ' wins.')
         if (p.checker == bet):
             global bet_validity
             bet_validity =  True
@@ -294,7 +293,6 @@ class AIPlayer(Player):
     def next_move(self, b):
         """ return the called AIPlayer‘s judgment of its best possible move
         """
-        self.num_moves += 1
         scores = self.scores_for(b)
         return self.max_score_column(scores)
 
