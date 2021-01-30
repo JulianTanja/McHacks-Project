@@ -1,30 +1,50 @@
 .Container {
   text-align: center;
-    background-color: #282c34;
+  background-color: #282c34;
   color: linen;
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-style: italic;
 
 }
 
-.Button {
-  color: red;
+
+.App{
+  background-color: #282c34;
+}
+h1 {
+  margin-bottom: 0;
+  margin-top: 0;
+  width: 100%;
+}
+
+h3 {
+  margin-top: 2%;
+  margin-bottom: 2%;
+  width: 100%;
+}
+
+.buttonRow{
+  width: 100%;
+  flex-direction: column;
+}
+
+.button {
+  width: 5%;
 }
 .App-header {
   background-color: #282c34;
-  min-height: 15vh;
+  /* min-height:x  15vh; */
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   align-items: center;
-  /* justify-content: center; */
-  font-size: calc(45px + 2vmin);
+  justify-content: center;
+  font-size: calc(25px + 2vmin);
   color: white;
 }
 
-
-
-
-
+html {
+  background-color: #282c34;
+}
 
 .board-row:after {
   clear: both;
@@ -36,9 +56,10 @@
 }
 
 .board{
-  padding-top: 8%;
-  width: 390px;
+  padding-top: 2%;
+  width: 350px;
   margin: auto;
+  background-color: #282c34;
 }
 .square {
   background: white;
@@ -48,11 +69,11 @@
   font-size: 34px;
   font-weight: bold;
   line-height: 34px;
-  height: 54px;
+  height: 49px;
   margin-right: 1px;
   margin-top: 1px;
   text-align: center;
-  width: 54px;
+  width: 49px;
 }
 
 .square:focus {

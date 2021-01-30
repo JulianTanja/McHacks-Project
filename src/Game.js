@@ -4,9 +4,18 @@ import ReactDOM from 'react-dom';
 
 
 class Square extends React.Component {
+  constructor(){
+    super();  
+    this.state = {
+      colored: false,
+      color: false,
+    }
+  }
     render() {
       return (
-        <button className="square">
+        <button className="square" style={{
+          
+        }}>
         {this.props.value}
       </button>
       );
