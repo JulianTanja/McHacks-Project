@@ -1,3 +1,11 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Jan 29 23:03:25 2021
+
+@author: andrewtuckman
+"""
+
 class Board:
     """ a data type for a Connect Four board with arbitrary dimensions
     """   
@@ -12,15 +20,16 @@ class Board:
     def __repr__(self):
         """ Returns a string representation of a Board object.
         """
-        s = ''        
+        s = '' 
+        
         for row in range(self.height):
             s += '|'   
 
             for col in range(self.width):
                 s += self.slots[row][col] + '|'
 
-            s += '\n'  
-            
+            s += '\n' 
+
         s += (2 * self.width + 1) * '-'
         s += '\n'
         s += ' '
@@ -32,6 +41,11 @@ class Board:
         return s
 
     def add_checker(self, checker, col):
+        """ adds the specified checker (either 'X' or 'O') to the
+            column with the specified index col in the called Board.
+            inputs: checker is either 'X' or 'O'
+                    col is a valid column index
+        """
         assert(checker == 'X' or checker == 'O')
         assert(col >= 0 and col < self.width)
         row = -1
@@ -41,7 +55,6 @@ class Board:
                 break
             else:
                 row -= 1
-                
     def reset(self):
         """ reset the Board object on which it is called by setting all slots
             to contain a space character
@@ -56,7 +69,7 @@ class Board:
             starting with 'X'.
             input: colnums is a string of valid column numbers
         """
-        checker = 'X'   # start by playing 'X'
+        checker = 'X'
 
         for col_str in colnums:
             col = int(col_str)
@@ -167,6 +180,7 @@ class Player:
         """
         assert(checker == 'X' or checker == 'O')
         self.checker = checker
+        self.num_moves = 0
         
     def __repr__(self):
         """ returns a string representing a Player object
@@ -180,12 +194,19 @@ class Player:
         if self.checker == 'X':
             return 'O'
         else:
-            return 'X'       
-           
+            return 'X'
+
 import random
 import time
     
 def connect_four(p1, p2, bet):
+    """ Plays a game of Connect Four between the two specified players,
+        and returns the Board object as it looks at the end of the game.
+        inputs: p1 and p2 are objects representing Connect Four
+          players (objects of the Player class or a subclass of Player).
+          One player should use 'X' checkers and the other should
+          use 'O' checkers.
+    """
     if p1.checker not in 'XO' or p2.checker not in 'XO' \
        or p1.checker == p2.checker:
         print('need one X player and one O player.')
@@ -209,19 +230,18 @@ def process_move(p, b, bet):
     """
     nxt_move = p.next_move(b)
     b.add_checker(p.checker, nxt_move)
-    time.sleep(.6)
+    time.sleep(.5)
     print(b)
     if b.is_win_for(p.checker):
-        print(str(p.checker), ' wins.')
+        print(str(p.checker), ' wins in ', str(p.num_moves), ' moves.')
         if (p.checker == bet):
             global bet_validity
             bet_validity =  True
-            print('Congratulations! You bet correctly!')
-        else:
-            print('You idiot, you guessed wrong.')
         return True
     elif b.is_full():
         print('\n' + "It's a tie!")
+        if (bet == 'Tie'):
+            bet_validity = True
         return True
     else:
         return False
@@ -293,11 +313,17 @@ class AIPlayer(Player):
     def next_move(self, b):
         """ return the called AIPlayer‘s judgment of its best possible move
         """
+        self.num_moves += 1
         scores = self.scores_for(b)
         return self.max_score_column(scores)
 
-  
-bet = input("Which player do you think will win?: ")   
+print("")
+print("Which player do you think will win?")
+bet = input("Enter X, O, or Tie: ")   
+
+if (bet != 'X' and bet != 'O' and bet != 'Tie'):
+    raise Exception("Sorry, please enter X, O, or Tie")
+
 
 bet_validity = False
 
@@ -305,6 +331,12 @@ p1 = AIPlayer('X', 'RANDOM', 2)
 p2 = AIPlayer('O', 'RANDOM', 2)
 connect_four(p1, p2, bet)
 
+if (bet_validity == True):
+    print('Congratulations! You bet correctly!')
+else:
+    print('You idiot, you guessed wrong.')
+    
+print(bet_validity)
 
 
     
