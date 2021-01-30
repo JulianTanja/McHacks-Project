@@ -181,20 +181,7 @@ class Player:
         if self.checker == 'X':
             return 'O'
         else:
-            return 'X'
-        
-    def next_move(self, b):
-        """ accepts a Board object b as a parameter and returns the column
-            where the player wants to make the next move
-        """
-        self.num_moves += 1
-        while True:
-            column_str = input('Enter a column: ')
-            if column_str in '0123456':
-                column_num = int(column_str)
-                if b.can_add_to(column_num):
-                    return column_num
-            print('Try again!')            
+            return 'X'       
            
 import random
 import time
