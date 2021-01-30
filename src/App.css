@@ -6,6 +6,20 @@
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-style: italic;
 
+
+
+.Button {
+  color: red;
+}
+.App-header {
+  background-color: #282c34;
+  min-height: 15vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  font-size: calc(45px + 2vmin);
+  color: white;
 }
 
 
@@ -13,7 +27,45 @@
 
 
 
+.board-row:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+.board-row {
+  width: 100%;
+}
 
+.board{
+  padding-top: 8%;
+  width: 390px;
+  margin: auto;
+}
+.square {
+  background: white;
+  border: 1px solid #999;
+  border-radius: 10%;
+  float: left;
+  font-size: 34px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 54px;
+  margin-right: 1px;
+  margin-top: 1px;
+  text-align: center;
+  width: 54px;
+}
 
+.square:focus {
+  outline: none;
+}
 
+.kbd-navigation .square:focus {
+  background: #ddd;
+}
+
+/* .game {
+  display: flex;
+  flex-direction: row;
+} */
 
