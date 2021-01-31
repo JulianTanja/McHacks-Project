@@ -1,9 +1,15 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
-var coord = [[0,0],[1,0],[0,3],[0,5],[3,2],[2,4],[1,1],[2,2]]
+var coord = [[5,6],[5,5],[5,4],[5,3],[5,2],[5,1],[4,3],[4,1]]
 var board = [[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],]
 
+
+const axios = require('axios');
+axios.get('/test')
+.then(function (response){
+  console.log(response)
+})
 class Square extends React.Component {
   constructor(props){
     super(props);  
@@ -18,9 +24,13 @@ class Square extends React.Component {
       color = "yellow";
     }
     this.state={
+      show: false,
       backColor: color
     }
   }
+
+
+ 
     render() {
       return (
         <button className="square" style={{
@@ -32,15 +42,9 @@ class Square extends React.Component {
     }
   }
   
-  async function timeout(delay) {
-    return new Promise( res => setTimeout(res, delay) );
-}
+ 
 
   class Board extends React.Component {
- 
-  
-  
-
      render() {
       var b = false;
       const chng = coord.map(it => {
@@ -51,7 +55,6 @@ class Square extends React.Component {
           board[it[0]][it[1]] = 2
           b= !b
         }
-         timeout(1000);
       })
       const boardup = board.map(item => (
           item.map(ite => (

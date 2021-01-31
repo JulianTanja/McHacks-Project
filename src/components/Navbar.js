@@ -14,8 +14,8 @@ export class Navbar extends Component {
                 {/* <input type="text" placeholder="Enter your bets here..."></input> */}
                 <div className="buttonRow">
                 <Button variant="danger" className="btn-primary">Red</Button>{' '}
-                <Button variant="warning" className="btn-primary">Yellow</Button>{' '}
-                <Button variant="light">Tie</Button>{' '}
+                <Button variant="warning" className="btn-primary" >Yellow</Button>{' '}
+                <Button variant="light" >Tie</Button>{' '}
             </div>
             </div>
         )
